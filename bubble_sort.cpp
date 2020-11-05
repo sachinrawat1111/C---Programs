@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-class QuickSort
+class BubbleSort
 {
     public:
     int a[5];
@@ -12,20 +12,24 @@ class QuickSort
             cin>>a[i];
         }
     }
-    void qsort()
+    void bsort()
     {
         int t;
-        for(int i=0;i<5;i++)
+        bool swap=false;
+        for(int i=0;i<4;i++)
         {
-            for(int j=i+1;j<5;j++)
+            for(int j=0;j<4-i;j++)
             {
-                if(a[i]>a[j])
+                if(a[j]>a[j+1])
                 {
-                    t=a[i];
-                    a[i]=a[j];
-                    a[j]=t;
+                    t=a[j];
+                    a[j]=a[j+1];
+                    a[j+1]=t;
+                    swap = true;
                 }
             }
+            if(swap==false)
+                break;
         }
     }
     void printArr()
@@ -41,7 +45,7 @@ int main()
     obj.getArr();
     cout<<"Array before sorting: ";
     obj.printArr();
-    obj.qsort();
+    obj.bsort();
     cout<<"\nArray after sorting: ";
     obj.printArr();
     return 0;
